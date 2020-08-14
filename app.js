@@ -3,6 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var admin = require("firebase-admin");
+var serviceAccount = require("./bin/garuda-hacks-firebase-adminsdk-o1yfo-52c123069e.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://garuda-hacks.firebaseio.com"
+});
 
 var apiRouter = require('./routes/apiRouter');
 
